@@ -33,6 +33,10 @@ html,body { margin:0; padding:0; min-height:100%; font-family: -apple-system, Bl
 
 /* page container/content */
 .container { max-width:1000px; margin:28px auto; padding:32px 24px; background:#fff; border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,0.08); }
+
+/* home page uses full-bleed sections (hero + courses) with their own backgrounds,
+   so it opts out of the boxed white .container wrapper */
+.page-home { max-width:100%; width:100%; margin:0; padding:0; background:transparent; border-radius:0; box-shadow:none; overflow:visible; }
 h1 { font-size:32px; margin-top:0; }
 p { line-height:1.6; color:#444; }
 
@@ -268,7 +272,7 @@ h1 {
 
 /* Courses Section */
 .courses-section {
-    background: var(--bg-primary);
+    background: var(--bg-secondary);
     padding: 60px 20px;
 }
 

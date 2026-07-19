@@ -22,6 +22,17 @@ class AppTestCase(unittest.TestCase):
         self.assertIn(b'Data Science Fundamentals', response.data)
         self.assertIn(b'Go Programming Essentials', response.data)
 
+    def test_index_uses_fullbleed_layout(self):
+        """Index page should opt out of the boxed white container so the
+        courses list renders full-width with its own section background."""
+        response = self.app.get('/')
+        self.assertEqual(response.status_code, 200)
+        # Home page main element uses the full-bleed class, not the boxed container
+        self.assertIn(b'<main class="page-home">', response.data)
+        # The courses list is wrapped in its own dedicated section
+        self.assertIn(b'courses-section', response.data)
+        self.assertIn(b'courses-grid', response.data)
+
     def test_course(self):
         response = self.app.get('/course/1')
         self.assertEqual(response.status_code, 200)
